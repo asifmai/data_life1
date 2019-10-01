@@ -21,6 +21,7 @@ const runBot = async () => {
       createCSVHeader();
       // Click Sort Button
       await page.waitForSelector('form.sort > .sort-wrapper > .sort-dropdown > input');
+      console.log('Sort Found...')
       await page.click('form.sort > .sort-wrapper > .sort-dropdown > input');
       await page.waitFor(1000);
 
