@@ -1,0 +1,16 @@
+{
+  "name": "apmmusic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "ship": "git add .&&git commit -m 'update'&&git push"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^1.17.0"
+  }
+}
