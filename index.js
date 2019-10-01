@@ -20,9 +20,9 @@ const runBot = async () => {
     } else {
       createCSVHeader();
       // Click Sort Button
-      await page.waitForSelector('form.sort > .sort-wrapper > .sort-dropdown > input');
+      await page.waitForSelector('form.sort > .sort-wrapper > .sort-dropdown');
       console.log('Sort Found...')
-      await page.click('form.sort > .sort-wrapper > .sort-dropdown > input');
+      await page.click('form.sort > .sort-wrapper > .sort-dropdown');
       await page.waitFor(1000);
 
       // Scroll to Page Bottom
