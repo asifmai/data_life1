@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const pageURL = 'https://www.apmmusic.com/search/%5B%7B%22field%22%3A%5B%22tags%22%2C%22track_title%22%2C%22track_description%22%2C%22album_title%22%2C%22album_description%22%2C%22lyrics%22%2C%22library%22%2C%22composer%22%5D%2C%22type%22%3A%22text%22%2C%22value%22%3A%22nathan%20rightnour%22%2C%22is_regular%22%3Atrue%2C%22is_query%22%3Atrue%2C%22operation%22%3A%22must%22%7D%5D';
+const pageURL = 'https://www.apmmusic.com/search/%5B%7B%22field%22%3A%22composer%22%2C%22value%22%3A%22Nathan%20Harrison%20Rightnour%22%2C%22operation%22%3A%22must%22%7D%5D';
 const fs = require('fs');
 let browser;
 let page;
@@ -21,7 +21,6 @@ const runBot = async () => {
       createCSVHeader();
       // Click Sort Button
       await page.waitForSelector('form.sort > .sort-wrapper > .sort-dropdown');
-      console.log('Sort Found...')
       await page.click('form.sort > .sort-wrapper > .sort-dropdown');
       await page.waitFor(1000);
 
@@ -189,7 +188,7 @@ const launchPage = (browser) => new Promise(async (resolve, reject) => {
 const launchBrowser = () => new Promise(async (resolve, reject) => {
   try {
     const browser = await puppeteer.launch({
-      headless: true,
+      headless: false,
       args: [
         '--disable-setuid-sandbox',
         '--disable-infobars',
