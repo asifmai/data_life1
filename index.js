@@ -61,7 +61,8 @@ const runBot = async () => {
         // Get Detail Track Info
         let downArrow = await tracks[i].$('.icon-arrow-down');
         await downArrow.click();
-        await page.waitForSelector('.track-details');
+        await page.waitFor(1000);
+        await page.waitForSelector('.track-details .more-control');
         await page.click('.track-details .more-control');
         
         trackInfo.company = await getCellVal('Library:');
@@ -187,7 +188,7 @@ const launchPage = (browser) => new Promise(async (resolve, reject) => {
 const launchBrowser = () => new Promise(async (resolve, reject) => {
   try {
     const browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
       args: [
         '--disable-setuid-sandbox',
         '--disable-infobars',
