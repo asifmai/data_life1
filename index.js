@@ -19,6 +19,12 @@ const runBot = async () => {
       console.log('Page Not Found...');
     } else {
       createCSVHeader();
+      // Click Sort Button
+      await page.waitForSelector('form.sort');
+      await page.click('form.sort > .sort-wrapper > .sort-dropdown > input');
+      await page.waitFor(1000);
+
+      // Scroll to Page Bottom
       await scrollToBottom();
       await page.waitForSelector('.tracks.results-table');
       const tracks = await page.$$('.tracks.results-table > .item');
@@ -113,7 +119,7 @@ const getCellVal = (label) => new Promise(async (resolve, reject) => {
               'ul.terms-list > li',
               elms => elms.map(elm => elm.innerText.trim())
           )
-          returnVal = returnVal.join(',');
+          returnVal = returnVal.join(', ');
           return resolve(returnVal);
         } else {
           returnVal = await props2[i].$eval(
